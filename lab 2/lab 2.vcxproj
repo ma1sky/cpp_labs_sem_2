@@ -128,6 +128,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="lab 2.cpp" />
+    <ClCompile Include="clinic_utils.cpp" />
+    <ClCompile Include="clinic.cpp" />
+    <ClCompile Include="file_operations.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="clinic.h" />
+    <ClInclude Include="clinic_utils.h" />
+    <ClInclude Include="file_operations.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -3,103 +3,29 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <fstream>
+#include <iomanip>
+#include "clinic.h"
+#include "clinic_utils.h"
+#include "file_operations.h"
 using namespace std;
 
-const char* filename = "DataBase.txt";
-const int maxLen = 16;
-
-class clinic {
-private:
-    char* fam;
-    char* name;
-    int specialty;
-    static int count;
-
-public:
-    clinic() : fam(nullptr), name(nullptr), specialty(-1) {
-        count++;
-    }
-
-    clinic(const char* fam, const char* name, int specialty)
-        : specialty(specialty), fam(nullptr), name(nullptr) {
-        setFam(fam);
-        setName(name);
-        count++;
-    }
-
-    ~clinic() {
-        delete[] fam;
-        delete[] name;
-        count--;
-    }
-
-
-
-    const char* getFam() const {
-        return fam;
-    }
-
-    void setFam(const char* fam) {
-        if (this->fam != nullptr){
-            delete[] this->fam;
-        }
-        this->fam = new char[strlen(fam) + 1];
-        strcpy(this->fam, fam);
-    }
-
-    const char* getName() const {
-        return name;
-    }
-
-    void setName(const char* name) {
-        if (this->name != nullptr) {
-            delete[] this->name;
-        }
-        this->name = new char[strlen(name) + 1];
-        strcpy(this->name, name);
-    }
-
-    int getSpec() const {
-        return specialty;
-    }
-
-    void setSpec(int specialty) {
-        this->specialty = specialty;
-    }
-
-    void printMedic() {
-        cout << this->fam << this->name << this->specialty;
-    }
-    static int getCount() {
-        return count;
-    }
-    
-};
-int clinic::count = 0;
-
-
-void addNew(clinic*& m, int& counter, const char* famIn, const char* nameIn, int specIn) {
-    clinic* newMed = new clinic[counter + 1];
-    for (int i = 0; i < counter; i++) {
-        newMed[i] = m[i];
-    }
-    newMed[counter] = clinic(famIn, nameIn, specIn);
-    delete[] m;
-    m = newMed;
-    counter++;
-}
+const int maxLen = 64;
 
 int main() {
-
-    clinic* medic = new clinic[5];
-    cout << medic->getCount();
-    int specIn;
-    int choice = -1;
+    const char* filename = "DataBase.txt";
     int counter = 0;
+
+    int size = 20;
+    clinic* medic = new clinic[size];
+
+    counter = readData(medic, size, filename);
+
+    int* arr;
+    int exSpec, amount, spec;
+    int choice = -1;
+
     char famInput[maxLen], nameInput[maxLen];
-    char* famIn;
-    char* nameIn;
-    
 
     do {
         cout << "\nChoose option\n";
@@ -111,26 +37,83 @@ int main() {
         cout << "Your choice: ";
         cin >> choice;
 
-        switch (choice){
+        if (cin.fail()) {
+            cout << "Invalid input. Please enter a valid choice." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+
+        switch (choice) {
         case 1:
-            cout << "\n" << "Enter family name, name, and specialty: ";
-            cin >> famInput >> nameInput >> specIn;
-            famIn = _strdup(famInput);
-            nameIn = _strdup(nameInput);
-            addNew(medic, counter, famIn, nameIn, specIn);
-            for (int i = 0; i < counter; i++) {
-                medic[i].printMedic();
+            cout << '\n' << "Enter family name: ";
+            cin.ignore();
+            cin.getline(famInput, maxLen);
+
+            cout << '\n' << "Enter name: ";
+            cin.getline(nameInput, maxLen);
+
+            cout << '\n' << "Enter specialty: ";
+            cin >> spec;
+
+            if (spec <= 0) {
+                cout << "Specialty must be a positive number." << endl;
+                continue;
             }
+
+            if (counter == size) {
+                size = reallocMem(medic, counter);
+            }
+
+            medic[counter].setFam(famInput);
+            medic[counter].setName(nameInput);
+            medic[counter].setSpec(spec);
+
+            counter++;
             break;
         case 2:
-
+            printData(medic, counter);
+            break;
         case 3:
+            arr = new int[1];
+            cout << "Enter fam: " << endl;
+            cin.ignore();
+            cin.getline(famInput, maxLen);
 
+            cout << "Enter name: " << endl;
+            cin.getline(nameInput, maxLen);
+
+            amount = findByName(medic, arr, counter, famInput, nameInput);
+            for (int i = 0; i < amount; i++) {
+                printf("%s\t%s\t%d\n", medic[arr[i]].getFam(), medic[arr[i]].getName(), medic[arr[i]].getSpec());
+            }
+            delete[] arr;
+            break;
         case 4:
+            arr = new int[1];
+            cout << "Enter specialty: " << endl;
+            cin >> exSpec;
 
+            if (exSpec <= 0) {
+                cout << "Specialty must be a positive number." << endl;
+                continue;
+            }
+
+            amount = findBySpec(medic, arr, counter, exSpec);
+            printf("\nSurname\tName\tSpecialty\n");
+            for (int i = 0; i < amount; i++) {
+                printf("%s\t%s\t%d\n", medic[arr[i]].getFam(), medic[arr[i]].getName(), medic[arr[i]].getSpec());
+            }
+            delete[] arr;
+            break;
         case 0:
+            saveData(medic, counter, filename);
+            delete[] medic;
             return 0;
+        default:
+            cout << "Invalid choice. Please enter a valid option." << endl;
         }
+
     } while (choice != 0);
 
     return 0;
