@@ -1,6 +1,7 @@
 #ifndef CLINIC_UTILS_H
 #define CLINIC_UTILS_H
 #include "clinic.h"
+
 void printData(clinic* medic, int counter);
 int reallocMem(clinic*& m, int& counter);
 void expandArr(int*& arr, int amount);

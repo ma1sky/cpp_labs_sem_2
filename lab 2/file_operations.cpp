@@ -57,3 +57,15 @@ void saveData(clinic*& m, int counter, const char* filename) {
 
     file.close();
 }
+
+int isValidInput(const char input[64]) {
+    int i = 0;
+    while (input[i]) {
+        if (!isalpha(input[i]) && input[i] != ' ' && input[i] != '\n' && input[i] != '\t') {
+            cout << "Invalid input, try again." << endl;
+            return 0;
+        }
+        i++;
+    }
+    return 1;
+}

@@ -1,5 +1,5 @@
-#include "clinic_utils.h"
 #include <iostream>
+#include "clinic_utils.h"
 #include "clinic.h"
 
 using namespace std;
