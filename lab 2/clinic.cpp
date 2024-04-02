@@ -63,7 +63,10 @@ void clinic::setSpec(const int specialty) {
 }
 
 void clinic::printMedic() {
-    cout << setw(10) << this->getFam() << '\t' << this->getName() << '\t' << this->getSpec() << '\n';
+    cout << setw(20) << left << this->getFam() 
+        << setw(20) << left << this->getName() 
+        << setw(10) << left << this->getSpec() 
+        << '\n';
 }
 
 int clinic::getCount() {

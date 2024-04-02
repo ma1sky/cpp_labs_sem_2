@@ -1,4 +1,4 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
@@ -51,14 +51,14 @@ int main() {
                 cout << '\n' << "Enter family name: ";
                 cin.getline(famInput, maxLen);
             } while (!isValidInput(famInput));
-            
+
             do {
                 cout << '\n' << "Enter name: ";
                 cin.getline(nameInput, maxLen);
             } while (!isValidInput(nameInput));
 
             cout << '\n' << "Enter specialty: ";
-            
+
             do {
                 cin >> spec;
                 if (cin.fail() || spec <= 0) {
@@ -79,7 +79,10 @@ int main() {
             counter++;
             break;
         case 2:
-            cout << "\nSurname\t\t" << "Name\t" << "Specialty\t" << endl;
+            cout << setw(20) << left << "\nSurname" 
+                << setw(20) << left << "Name" 
+                << setw(10) << left << "Specialty" 
+                << endl;
             printData(medic, counter);
             break;
         case 3:
@@ -103,7 +106,8 @@ int main() {
                         cout << setw(10) << medic[arr[i]].getFam() << medic[arr[i]].getName() << medic[arr[i]].getSpec();
                     }
                     flag = true;
-                } else {
+                }
+                else {
                     flag = false;
                 }
                 delete[] arr;
@@ -113,16 +117,18 @@ int main() {
             do {
                 arr = new int[1];
                 cout << "Enter specialty: " << endl;
-                cin >> exSpec;
-
-                if (exSpec <= 0) {
-                    cout << "Specialty must be a positive number." << endl;
-                    continue;
-                }
+                do {
+                    cin >> exSpec;
+                    if (cin.fail() || exSpec <= 0) {
+                        cout << "Specialty must be a positive number." << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+            } while (cin.fail() || exSpec <= 0);
 
                 amount = findBySpec(medic, arr, counter, exSpec);
-                if (amount != 0){
-                cout << "\nSurname\t\t" << "Name\t" << "Specialty\t" << endl;
+                if (amount != 0) {
+                    cout << "\nSurname\t\t" << "Name\t" << "Specialty\t" << endl;
                     for (int i = 0; i < amount; i++) {
                         cout << setw(10) << medic[arr[i]].getFam() << medic[arr[i]].getName() << medic[arr[i]].getSpec();
                     }

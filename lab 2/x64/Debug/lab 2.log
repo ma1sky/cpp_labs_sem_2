@@ -1,5 +1,2 @@
-﻿  main.cpp
-D:\Programming\cpp_labs_sem_2\lab 2\main.cpp(64,30): error C2065: input: необъявленный идентификатор
-D:\Programming\cpp_labs_sem_2\lab 2\main.cpp(64,17): error C3861: getline: идентификатор не найден
-D:\Programming\cpp_labs_sem_2\lab 2\main.cpp(66,30): error C2079: "ss" использует не имеющую определения структуру class "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>"
-D:\Programming\cpp_labs_sem_2\lab 2\main.cpp(66,33): error C2065: input: необъявленный идентификатор
+﻿  file_operations.cpp
+  lab 2.vcxproj -> D:\Programming\cpp_labs_sem_2\lab 2\x64\Debug\lab 2.exe
