@@ -27,8 +27,6 @@ public:
     static int getCount();
     fio& operator=(const fio& other);
     bool operator==(const fio& other);
-
-    bool isFIO(const char* fam, const char* name, const char* father);
 };
 
 #endif

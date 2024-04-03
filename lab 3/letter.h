@@ -14,10 +14,14 @@ public:
     letter(const fio& FIO, const float price, const char* address);
     letter(const letter& other);
     ~letter();
-
-    fio getFIO();
+    /*
+    char* getFam();
+    char* getName();
+    char* getFather();
+    */
     float getPrice();
     char* getAddr();
+    fio getFIO();
 
     void setFIO(const char* fam, const char* name, const char* father);
     void setPrice(const float price);
@@ -28,7 +32,9 @@ public:
     static int getCount();
     letter& operator=(const letter& other);
     bool operator==(const letter& other);
+    friend ostream& operator<<(ostream& os, letter& m);
 };
+
 
 #endif
 

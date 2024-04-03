@@ -20,5 +20,4 @@ int main() {
 	second.printFIO();
 	bool res = first == second;
 	cout << res;
-
 }

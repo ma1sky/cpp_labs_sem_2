@@ -129,11 +129,15 @@
   <ItemGroup>
     <ClCompile Include="fio.cpp" />
     <ClCompile Include="letter.cpp" />
+    <ClCompile Include="letter_utils.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="file_operations.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fio.h" />
+    <ClInclude Include="file_operations.h" />
     <ClInclude Include="letter.h" />
+    <ClInclude Include="letter_utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

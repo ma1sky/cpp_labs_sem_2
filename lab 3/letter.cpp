@@ -41,6 +41,20 @@ fio letter::getFIO() {
     return res;
 }
 
+/*
+char* letter::getFam() {
+    return _strdup(this->FIO.getFam());
+}
+
+char* letter::getName() {
+    return _strdup(this->FIO.getName());
+}
+
+char* letter::getFather() {
+    return _strdup(this->FIO.getFather());
+}
+*/
+
 char* letter::getAddr() {
     return _strdup(this->address);
 }
@@ -95,4 +109,22 @@ bool letter::operator==(const letter& other) {
     else {
         return 0;
     }
+}
+
+static void letter::operator!(letter*& m) {
+
+}
+
+ostream& operator<<(ostream& os, letter& m)
+{
+    os << left << setw(20) << m.getFIO().getFam() << '\n'
+        << left << setw(20) << m.getFIO().getName() << '\n'
+        << left << setw(20) << m.getFIO().getFather() << '\n'
+        << left << setw(20) << m.getPrice() << '\n'
+        << left << setw(20) << m.getAddr() << endl;
+    return os;
+}
+
+float letter::operator! () {
+    return this->price;
 }

@@ -96,7 +96,3 @@ bool fio::operator==(const fio& other) {
         return 0;
     }
 }
-
-bool fio::isFIO(const char* fam, const char* name, const char* father) {
-    return strcmp(this->getFam(), fam) == 0 && strcmp(this->getName(), name) == 0 && strcmp(this->getFather(), father);
-}
