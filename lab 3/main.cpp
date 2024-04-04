@@ -96,6 +96,7 @@ int main() {
                 << setw(20) << left << "Father"
                 << endl;
             for (int i = 0; i < counter; i++) {
+                //cout << m[i];
                 m[i].printLetter();
             }
             break;

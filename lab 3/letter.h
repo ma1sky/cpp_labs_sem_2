@@ -2,6 +2,7 @@
 #define LETTER_H
 #include "fio.h"
 #include <iostream>
+#include <ostream>
 
 class letter {
 private:
@@ -15,11 +16,7 @@ public:
     letter(const fio& FIO, const float price, const char* address);
     letter(const letter& other);
     ~letter();
-    /*
-    char* getFam();
-    char* getName();
-    char* getFather();
-    */
+
     float getPrice();
     char* getAddr();
     fio getFIO();
@@ -36,7 +33,7 @@ public:
     bool operator==(const letter& other);
     bool operator<(const letter& other);
 
-    /*friend ostream& operator<<(ostream& os, letter*& m);*/
+    //friend ostream& operator<<(ostream& os, letter* m);
     friend void sort(letter*& arr, int count);
 };
 

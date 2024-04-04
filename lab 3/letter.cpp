@@ -4,6 +4,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <iomanip>
+#include <ostream>
 
 using namespace std;
 
@@ -124,13 +125,13 @@ bool letter::operator<(const letter& other)
     }
 }
 
-//ostream& operator<<(ostream& os, letter& m)
+//ostream& operator<<(ostream & os, letter * m)
 //{
-//    os << left << setw(20) << m.getFIO().getFam() << '\n'
-//        << left << setw(20) << m.getFIO().getName() << '\n'
-//        << left << setw(20) << m.getFIO().getFather() << '\n'
-//        << left << setw(20) << m.getPrice() << '\n'
-//        << left << setw(20) << m.getAddr() << endl;
+//    os << left << setw(20) << m->getFIO().getFam()
+//        << left << setw(20) << m->getFIO().getName()
+//        << left << setw(20) << m->getFIO().getFather()
+//        << left << setw(20) << m->getPrice()
+//        << left << setw(20) << m->getAddr() << endl;
 //    return os;
 //}
 
