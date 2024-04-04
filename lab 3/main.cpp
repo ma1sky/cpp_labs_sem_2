@@ -31,9 +31,10 @@ int main() {
 
     do {
         cout << "\nChoose option\n";
-        cout << "1. Add new medic\n";
+        cout << "1. Add new letter\n";
         cout << "2. Print data\n";
-        cout << "3. Find doctor by FIO\n";
+        cout << "3. Find letter by FIO\n";
+        cout << "4. Sort by price\n";
         cout << "5. Exit\n";
         cout << "Your choice: ";
         cin >> choice;
@@ -65,12 +66,13 @@ int main() {
             do {
                 cout << '\n' << "Enter addres: ";
                 cin.getline(addrInput, maxLen);
-            } while (!isValidInput(fatherInput));
+            } while (!isValidInput(addrInput));
 
             do {
+                cout << '\n' << "Enter price: ";
                 cin >> priceInput;
                 if (cin.fail() || priceInput <= 0) {
-                    cout << "Specialty must be a positive number." << endl;
+                    cout << "Price must be a positive number." << endl;
                     cin.clear();
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 }

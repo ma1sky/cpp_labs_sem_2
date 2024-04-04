@@ -32,6 +32,7 @@ int readData(letter*& m, int& size, const char* filename) {
         file >> addressLen;
         file.get();
         file.get(addressInput, addressLen);
+        file.get();
         file >> priceInput;
 
 
