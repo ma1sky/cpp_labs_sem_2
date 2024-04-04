@@ -11,7 +11,7 @@ void printData(letter* m, int counter) {
 }
 
 int reallocMem(letter*& m, int& counter) {
-    int size = counter * 1.5;
+    int size = counter + 10;
     letter* newM = new letter[size];
     for (int i = 0; i < counter; i++) {
         newM[i] = m[i];
@@ -22,10 +22,22 @@ int reallocMem(letter*& m, int& counter) {
 }
 
 void expandArr(int*& arr, int amount) {
-    int* newArr = new int[amount * 1.5];
+    int* newArr = new int[amount + 10];
     for (int i = 0; i < amount; i++) {
         newArr[i] = arr[i];
     }
     delete[] arr;
     arr = newArr;
+}
+
+int findByFIO(letter* m, fio find, int*& arr, int counter) {
+    int amount = 0;
+    for (int i = 0; i < counter; i++) {
+        if (m[i].getFIO() == find) {
+            expandArr(arr, amount);
+            arr[amount] = i;
+            amount++;
+        }
+    }
+    return amount;
 }

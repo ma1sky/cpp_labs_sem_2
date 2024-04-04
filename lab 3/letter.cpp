@@ -69,6 +69,10 @@ void letter::setFIO(const char* fam, const char* name, const char* father) {
     this->FIO.setFather(father);
 }
 
+void letter::setFIO(fio FIO) {
+    this->FIO = FIO;
+}
+
 void letter::setAddr(const char* address) {
     delete[] this->address;
     this->address = _strdup(address);
@@ -111,20 +115,36 @@ bool letter::operator==(const letter& other) {
     }
 }
 
-static void letter::operator!(letter*& m) {
-
-}
-
-ostream& operator<<(ostream& os, letter& m)
+bool letter::operator<(const letter& other)
 {
-    os << left << setw(20) << m.getFIO().getFam() << '\n'
-        << left << setw(20) << m.getFIO().getName() << '\n'
-        << left << setw(20) << m.getFIO().getFather() << '\n'
-        << left << setw(20) << m.getPrice() << '\n'
-        << left << setw(20) << m.getAddr() << endl;
-    return os;
+    if (this->price < other.price) {
+        return 1;
+    } else {
+        return 0;
+    }
 }
 
-float letter::operator! () {
-    return this->price;
+//ostream& operator<<(ostream& os, letter& m)
+//{
+//    os << left << setw(20) << m.getFIO().getFam() << '\n'
+//        << left << setw(20) << m.getFIO().getName() << '\n'
+//        << left << setw(20) << m.getFIO().getFather() << '\n'
+//        << left << setw(20) << m.getPrice() << '\n'
+//        << left << setw(20) << m.getAddr() << endl;
+//    return os;
+//}
+
+void sort(letter*& arr, int count) {
+    bool swapped;
+    for (int i = 0; i < count - 1; i++) {
+        swapped = false;
+        for (int j = 0; j < count - i - 1; j++) {
+            if (arr[j] < arr[j + 1]) {
+                swap(arr[j], arr[j + 1]);
+                swapped = true;
+            }
+        }
+        if (swapped == false)
+            break;
+    }
 }

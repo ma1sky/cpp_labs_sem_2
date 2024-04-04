@@ -6,11 +6,10 @@
 #include "letter_utils.h"
 
 using namespace std;
-const int maxLen = 64;
 
 int readData(letter*& m, int& size, const char* filename) {
     int counter = 0;
-    int priceInput;
+    float priceInput;
     char famInput[maxLen], nameInput[maxLen], fatherInput[maxLen], addressInput[maxLen];
     int famLen, nameLen, fatherLen, addressLen;
 
@@ -75,7 +74,7 @@ void saveData(letter*& m, int counter, const char* filename) {
     file.close();
 }
 
-int isValidInput(const char input[64]) {
+int isValidInput(const char input[maxLen]) {
     int i = 0;
     if (!(input[0] != '\0' && strlen(input) > 0)) {
         cout << "Invalid input, try again." << endl;

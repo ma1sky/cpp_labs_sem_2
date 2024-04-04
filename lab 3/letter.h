@@ -1,15 +1,16 @@
 #ifndef LETTER_H
 #define LETTER_H
 #include "fio.h"
+#include <iostream>
 
 class letter {
 private:
     fio FIO;
-    float price;
     char* address;
     static int count;
 
 public:
+    float price;
     letter();
     letter(const fio& FIO, const float price, const char* address);
     letter(const letter& other);
@@ -24,6 +25,7 @@ public:
     fio getFIO();
 
     void setFIO(const char* fam, const char* name, const char* father);
+    void setFIO(fio FIO);
     void setPrice(const float price);
     void setAddr(const char* addres);
 
@@ -32,7 +34,10 @@ public:
     static int getCount();
     letter& operator=(const letter& other);
     bool operator==(const letter& other);
-    friend ostream& operator<<(ostream& os, letter& m);
+    bool operator<(const letter& other);
+
+    /*friend ostream& operator<<(ostream& os, letter*& m);*/
+    friend void sort(letter*& arr, int count);
 };
 
 
