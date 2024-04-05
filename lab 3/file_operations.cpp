@@ -20,19 +20,15 @@ int readData(letter*& m, int& size, const char* filename) {
         return 0;
     }
 
-    while (file >> famLen) {
-        file.get();
+    while (file.get() == '/') {
+        file >> famLen;
         file.get(famInput, famLen + 1);
         file >> nameLen;
-        file.get();
         file.get(nameInput, nameLen + 1);
         file >> fatherLen;
-        file.get();
         file.get(fatherInput, fatherLen + 1);
         file >> addressLen;
-        file.get();
-        file.get(addressInput, addressLen);
-        file.get();
+        file.get(addressInput, addressLen + 1);
         file >> priceInput;
 
 
@@ -51,7 +47,7 @@ int readData(letter*& m, int& size, const char* filename) {
     return counter;
 }
 
-void saveData(letter*& m, int counter, const char* filename) {
+void saveData(letter* m, int counter, const char* filename) {
     ofstream file;
     file.open(filename);
 
@@ -61,15 +57,16 @@ void saveData(letter*& m, int counter, const char* filename) {
     }
 
     for (int i = 0; i < counter; i++) {
-        file << strlen(m[i].getFIO().getFam()) << ' ' 
-            << m[i].getFIO().getFam() << ' ' 
-            << strlen(m[i].getFIO().getName()) << ' ' 
-            << m[i].getFIO().getName() << ' ' 
-            << strlen(m[i].getFIO().getFather()) << ' ' 
-            << m[i].getFIO().getFather() << ' '
-            << strlen(m[i].getAddr()) << ' '
-            << m[i].getAddr() << ' '
-            << m[i].getPrice() << ' ';
+        file << "/"
+            << strlen(m[i].getFIO().getFam()) 
+            << m[i].getFIO().getFam()
+            << strlen(m[i].getFIO().getName()) 
+            << m[i].getFIO().getName() 
+            << strlen(m[i].getFIO().getFather()) 
+            << m[i].getFIO().getFather()
+            << strlen(m[i].getAddr())
+            << m[i].getAddr()
+            << m[i].getPrice();
     }
 
     file.close();
