@@ -1,2 +1,0 @@
-D:\Programming\C++ labs\lab 3\x64\Debug\lab 3.exe
-D:\Programming\cpp_labs_sem_2\lab 3\x64\Debug\lab 3.exe
