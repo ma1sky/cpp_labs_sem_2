@@ -1,0 +1,4 @@
+﻿  lab 5.cpp
+D:\Programming\C++ labs\lab 5\lab 5.cpp(90,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\Programming\C++ labs\lab 5\lab 5.cpp(92,6): warning C4101: arr: неиспользованная локальная переменная
+  lab 5.vcxproj -> D:\Programming\C++ labs\lab 5\x64\Debug\lab 5.exe

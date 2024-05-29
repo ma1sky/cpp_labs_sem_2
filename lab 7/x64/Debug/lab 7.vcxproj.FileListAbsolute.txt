@@ -1,0 +1,2 @@
+D:\Programming\C++ labs\lab 7\x64\Debug\lab 7.exe
+D:\Programming\cpp_labs_sem_2\lab 7\x64\Debug\lab 7.exe

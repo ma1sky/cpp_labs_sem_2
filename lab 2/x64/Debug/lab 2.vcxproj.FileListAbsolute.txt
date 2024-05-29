@@ -1,0 +1,2 @@
+D:\Programming\C++ labs\lab 2\x64\Debug\lab 2.exe
+D:\Programming\cpp_labs_sem_2\lab 2\x64\Debug\lab 2.exe

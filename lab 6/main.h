@@ -1,0 +1,14 @@
+#include <iostream>
+#include <ostream>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include <fstream>
+#include <iomanip>
+#include "fio.h"
+#include "letter.h"
+#include "letter_utils.h"
+#include "file_operations.h"
+#include "date.h"
+#include "delivery.h"
+#include "common.h"
