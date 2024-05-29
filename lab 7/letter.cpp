@@ -9,12 +9,7 @@ letter::letter() : price(0), address(nullptr), FIO(nullptr, nullptr, nullptr) { 
 
 letter::letter(const fio& FIO, const float price, const char* address) : FIO(FIO), price(price), address(_strdup(address)) { count++; }
 
-letter::letter(const letter& other) : FIO(other.FIO), price(other.price), address(nullptr) {
-    if (other.address != nullptr) {
-        this->address = _strdup(other.address);
-    }
-    count++;
-}
+letter::letter(const letter& other) : FIO(other.FIO), price(other.price), address(_strdup(other.address)) { count++; }
 
 letter::~letter() {
     delete[] this->address;
